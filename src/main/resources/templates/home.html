@@ -34,6 +34,9 @@
                 <li class="nav-item" sec:authorize="hasRole('ADMIN')">
                     <a class="nav-link" th:href="@{/admin/dashboard}">관리자</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/user/password}">비밀번호 변경</a>
+                </li>
             </ul>
             <form th:action="@{/logout}" method="post" class="d-flex">
                 <button class="btn btn-outline-light btn-sm px-3">로그아웃</button>
@@ -53,6 +56,12 @@
                   class="badge bg-white text-dark badge-role me-1"
                   th:text="${role}"></span>
         </div>
+    </div>
+
+    <div th:if="${successMessage != null}"
+         class="alert alert-success alert-dismissible fade show" role="alert">
+        <span th:text="${successMessage}"></span>
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
     </div>
 
     <!-- Quick Links -->
@@ -76,6 +85,13 @@
                 <h6 class="fw-bold">관리자 대시보드</h6>
                 <p class="text-muted small mb-3">시스템 관리 메뉴입니다. (관리자 전용)</p>
                 <a th:href="@{/admin/dashboard}" class="btn btn-warning btn-sm mt-auto">바로가기</a>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card stat-card p-4 h-100">
+                <h6 class="fw-bold">비밀번호 변경</h6>
+                <p class="text-muted small mb-3">비밀번호를 변경합니다.</p>
+                <a th:href="@{/user/password}" class="btn btn-primary btn-sm mt-auto">바로가기</a>
             </div>
         </div>
     </div>
